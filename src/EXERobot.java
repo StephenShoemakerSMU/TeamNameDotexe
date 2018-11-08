@@ -16,7 +16,7 @@ public class EXERobot {
     final private static int MOTOR_RIGHT = 15;
 
     //Servo Measurement Ports
-    final private static int SERVO_MEASUREMENTS_1 = 0;
+    final private static int SERVO_MEASUREMENTS_1 = 1;
     final private static int SERVO_MEASUREMENTS_2 = 4;
     final private static int PING_PONG_SERVO = 3;
 
@@ -68,7 +68,8 @@ public class EXERobot {
 
     //Sets the measurement servo to a certain value
     public void setMeasurementServo(int angle) {
-        robot.runPCAServo(SERVO_MEASUREMENTS_1, (int) ((7.2 / 9.0) * angle));
+        int adjustedAngle = (int) ((7.2 / 9.0) * angle);
+        robot.runPCAServo(SERVO_MEASUREMENTS_1, adjustedAngle);
     }
 
     //Reads and gives an average value for ten readings from the ir beacons
@@ -367,11 +368,13 @@ public class EXERobot {
 
     //DIAGNOSTIC FUNCTIONS
     public void testTemperature(){
-        setMeasurementServo(20);
-        robot.sleep(1000);
-        robot.sleep(15000);
+
+        System.out.println("TESTING TEMPERATURE");
+        //setMeasurementServo(20);
+        //robot.sleep(1000);
+        //robot.sleep(15000);
         System.out.println("Temperature: " +  getTemperature());
-        setMeasurementServo(80);
+        //setMeasurementServo(80);
     }
 
     public void testConductivity(){
@@ -387,6 +390,12 @@ public class EXERobot {
     }
 
     public void testIR(){
-        angleRecieved();
+        //angleRecieved();
+        robot.runPCAServo(PING_PONG_SERVO, 180);
+        //robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 5000);
+        //robot.sleep(50000);
+        robot.runPCAServo(PING_PONG_SERVO, 20);
+        robot.sleep(3000);
+        robot.runPCAServo(PING_PONG_SERVO, 180);
     }
 }
