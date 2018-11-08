@@ -149,7 +149,7 @@ public class EXERobot {
             int reading = robot.getAnalogPin(TEMP_SENSOR_PORT).getValue();
             sum += reading;
         }
-        averageReading = sum /  (double) readingCount;
+        averageReading = sum / (double) readingCount;
         //double temp = (averageReading - yInter) / slope;
         return averageReading;
     }
@@ -360,5 +360,33 @@ public class EXERobot {
         robot.sleep(3000);
         robot.runPCAServo(PING_PONG_SERVO, 180);
 
+    }
+
+
+
+
+    //DIAGNOSTIC FUNCTIONS
+    public void testTemperature(){
+        setMeasurementServo(20);
+        robot.sleep(1000);
+        robot.sleep(15000);
+        System.out.println("Temperature: " +  getTemperature());
+        setMeasurementServo(80);
+    }
+
+    public void testConductivity(){
+        setMeasurementServo(20);
+        robot.sleep(1000);
+        robot.sleep(15000);
+        System.out.println("Conductivity: " +  getConductivity());
+        setMeasurementServo(80);
+    }
+
+    public void testInclinometer(){
+        System.out.println("Inclinometer: " + getSlope());
+    }
+
+    public void testIR(){
+        angleRecieved();
     }
 }
