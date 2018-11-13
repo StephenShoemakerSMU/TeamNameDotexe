@@ -153,7 +153,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="149" />
     <option name="y" value="-8" />
     <option name="width" value="1400" />
@@ -185,7 +185,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541643844088" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542080572683" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -218,13 +218,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RobotDriver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RobotDriver" />
+      <module name="Java Code" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.QuadrantOne" />
       <item itemvalue="Application.Diagnostic" />
+      <item itemvalue="Application.RobotDriver" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Diagnostic" />
+        <item itemvalue="Application.RobotDriver" />
         <item itemvalue="Application.QuadrantOne" />
       </list>
     </recent_temporary>

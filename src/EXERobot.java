@@ -42,7 +42,7 @@ public class EXERobot {
 
     //Zero arg constructor
     public EXERobot() {
-        RXTXRobot robot = new ArduinoUno();
+        robot = new ArduinoUno();
         robot.setPort(USB_PORT);
         robot.connect();
     }
