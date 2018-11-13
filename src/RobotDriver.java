@@ -101,7 +101,7 @@ public class RobotDriver {
 	public static void main(String[] args) {
 
 
-		EXERobot robot = new EXERobot("COM3");
+		EXERobot robot = new EXERobot();
 		//reading input from user for program to run
 		Console terminal = System.console();
 
@@ -115,48 +115,21 @@ public class RobotDriver {
 			switch (in) {
 				case 'a':
 					//				LEFT		RIGHT
-					robot.moveMotor(5000);//enter int channel1, int speed1, int channel2, int speed2, int time
+					robot.quadrantOne();
 					break;
 				case 'b':
-					System.out.println("Enter Angle: ");
-					int angle = Integer.parseInt(input.nextLine());
-					robot.setMeasurementServo(angle);  //20 degrees is neutral
+					robot.quadrantTwo();
 					break;
 				case 'c':
-					terminal.printf("" + robot.readIRChar());
+					robot.quadrantThree();
 					break;
 				case 'd':
-					robot.motorRunIndefinitely();
+					robot.quadrantFour();
 					break;
 				case 'e':
-					System.out.println("" + robot.getTemperature());
+					robot.test();
 					break;
-				case 'f':
-						robot.checkBump();
-						break;
-				case 'g':
-					for(int i = 0; i < 9; i++)
-						robot.turnTen();
-					break;
-				case 'h':
-					for(int i = 0; i < 9; i++)
-						robot.turnTen();
-					robot.stop();
-					for(int i = 0; i < 9; i++)
-						robot.turnTen();
-					break;
-				case 'i':
-					robot.angleRecieved();
-					break;
-				case 'j':
-					System.out.println("Enter an angle: ");
-					angle = Integer.parseInt(input.nextLine());
-					robot.moveIrSensorServo(angle);  //20 degrees is neutral
-					break;
-				case 'k':
-					System.out.println("YEETING THE BRIDGE: ");
-					robot.yeetTheBridge();
-					break;
+
 
 			}
 			in = input.nextLine().charAt(0);
@@ -168,11 +141,11 @@ public class RobotDriver {
 	static public void printMenu()
 	{
 		String menu = "Options For Robot: \n" +
-				"a: move three meters \n" +
-				"b: move servo motor \n" +
-				"c: read IR char \n" +
-				"d: run motor until bump sensor \n" +
-				"e: get temperature \n";
+				"a: Quadrant One \n" +
+				"b: Quadrant Two\n" +
+				"c: Quadrant Three \n" +
+				"d: Quadrant Four\n" +
+				"e: Whatever is in test function";
 		System.out.print(menu);
 
 	}

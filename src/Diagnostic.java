@@ -3,11 +3,7 @@ import java.util.Scanner;
 public class Diagnostic {
     public static void main(String[] args) {
 
-        String output = "a. Test Temperature \n" +
-                "b. Test Conductivity \n" +
-                "c. Test Inclinometer \n" +
-                "d. Test IR \n";
-        System.out.println(output);
+       menu();
 
         Scanner input = new Scanner(System.in);
         char in = input.nextLine().charAt(0);
@@ -46,7 +42,8 @@ public class Diagnostic {
             String output = "a. Test Temperature \n" +
                     "b. Test Conductivity \n" +
                     "c. Test Inclinometer \n" +
-                    "d. Test IR \n";
+                    "d. Test IR \n" +
+                    "e. Test Ping \n";
             System.out.println(output);
         }
     }

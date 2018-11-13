@@ -45,6 +45,7 @@ public class EXERobot {
         robot = new ArduinoUno();
         robot.setPort(USB_PORT);
         robot.connect();
+        zeroServos();
     }
 
     //One Arg Constructor
@@ -53,6 +54,7 @@ public class EXERobot {
         robot = new ArduinoUno();
         robot.setPort(USB_PORT);
         robot.connect();
+        zeroServos();
     }
 
     //Turns of robot, call at end of run
@@ -152,6 +154,27 @@ public class EXERobot {
         }
         averageReading = sum / (double) readingCount;
         //double temp = (averageReading - yInter) / slope;
+        return averageReading;
+    }
+
+    //use this function to getPing sensor value
+    public double getPing() {
+        int sum = 0;
+
+        //CALIBRATE THESE VALUES
+        //double slope =  -1.071428571;
+        //double yInter = 847.7452381;
+
+
+        double averageReading = 0;
+        int readingCount = 10;
+        for (int i = 0; i < readingCount; i++) {
+            robot.refreshAnalogPins();
+            int reading = robot.getAnalogPin(PING_SENSOR).getValue();
+            sum += reading;
+        }
+        averageReading = sum / (double) readingCount;
+        //double pingValue = (averageReading - yInter) / slope;
         return averageReading;
     }
 
@@ -293,6 +316,57 @@ public class EXERobot {
 
     //This is the function for temperature quadrant
     public void quadrantOne() {
+
+        yeetTheBridge();
+
+        //
+        goToOrigin();
+
+        //Move South to Hots Spot until Perpindicular with hot spot
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 5000);
+        robot.sleep(5100);
+        //Turn Towards HotSpot
+        turnNinety();
+
+        //Go Towards Hot spot
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+        robot.sleep(3100);
+        //Get Temperature
+        testTemperature();
+
+        //back away from hotspot
+        robot.runTwoPCAMotor(MOTOR_LEFT, -1* MOTORLEFTCONSTANT, MOTOR_RIGHT, -1*MOTORRIGHTCONSTANT, 1000);
+        robot.sleep(1100);
+
+        //turn 180
+        turnNinety();
+        turnNinety();
+
+        //approach Volcano
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, -1* MOTORRIGHTCONSTANT, 2000);
+        robot.sleep(2100);
+
+        //turn 90 to line up with ramp
+        turnNinety();
+
+        //line up with 45 degree angle from volcano
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+
+        //turn Towards volcano ramp
+        turnNinety();
+        turnFourtyFive();
+
+        //Go up ramp
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+        robot.sleep(3000);
+
+        //getIncline
+        testInclinometer();
+
+        //FIN
+
+
+
         //setMeasurementServo(80);
         //moveIrSensorServo(0);
         //yeetTheBridge();
@@ -354,15 +428,123 @@ public class EXERobot {
 
     //Run for quadrant two
     public void quadrantTwo() {
-        robot.runPCAServo(PING_PONG_SERVO, 180);
-        //robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 5000);
-        //robot.sleep(50000);
-        robot.runPCAServo(PING_PONG_SERVO, 20);
+        yeetTheBridge();
+
+        //
+        goToOrigin();
+
+        //Move South to Sangbox until Perpindicular with sandBox
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 5000);
+        robot.sleep(5100);
+        //Turn Towards SandBox
+        turnNinety();
+
+        //Go Towards SandBox
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+        robot.sleep(3100);
+        //Get Conductivity
+        testTemperature();
+
+        //back away from hotspot
+        robot.runTwoPCAMotor(MOTOR_LEFT, -1* MOTORLEFTCONSTANT, MOTOR_RIGHT, -1*MOTORRIGHTCONSTANT, 1000);
+        robot.sleep(1100);
+
+        //turn 180
+        turnNinety();
+        turnNinety();
+
+        //approach Volcano
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, -1* MOTORRIGHTCONSTANT, 2000);
+        robot.sleep(2100);
+
+        //turn 90 to line up with ramp
+        turnNinety();
+
+        //line up with 45 degree angle from volcano
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+
+        //turn Towards volcano ramp
+        turnNinety();
+        turnFourtyFive();
+
+        //Go up ramp
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
         robot.sleep(3000);
-        robot.runPCAServo(PING_PONG_SERVO, 180);
+
+        //getIncline
+        testInclinometer();
 
     }
 
+    //Run for Quadrant Three
+    public void quadrantThree(){
+        goToOrigin();
+
+        //Approach 45 degrees of volcano
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+        robot.sleep(3000);
+        //Turn Towards Volcano
+        turnFourtyFive();
+
+        //Ascend halfway up volcano
+
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+        robot.sleep(3000);
+
+        //getIncline
+        testInclinometer();
+
+        //ascend rest of Volcano
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+        robot.sleep(3000);
+
+        //Drop Ball
+        ballDrop();
+
+        //fin
+    }
+
+    //Run for Quadrant Four
+    public void quadrantFour(){
+        goToOrigin();
+
+        //Pass the barriers
+        frogger();
+
+        //Turn to facing volcano
+        turnFourtyFive();
+
+        //ascend volcano
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
+        robot.sleep(3000);
+
+        //getIncline
+        testInclinometer();
+
+        //fin
+    }
+
+
+    //Put whatever needs to be tested into here
+    public void test(){
+
+    }
+
+    //This function figures out where the robot is and goes to a set point based on where it is after leaving the bridge
+    public void goToOrigin(){
+
+    }
+    //sets the servos to 0 origin
+    public void zeroServos(){
+        setMeasurementServo(80);
+        moveIrSensorServo(0);
+    }
+
+    //This function will be used to pass the movable barriers
+    //Treat it like a game of super easy frogger
+    public void frogger(){
+
+    }
 
 
 
@@ -370,11 +552,11 @@ public class EXERobot {
     public void testTemperature(){
 
         System.out.println("TESTING TEMPERATURE");
-        //setMeasurementServo(20);
-        //robot.sleep(1000);
-        //robot.sleep(15000);
+        setMeasurementServo(20);
+        robot.sleep(1000);
+        robot.sleep(15000);
         System.out.println("Temperature: " +  getTemperature());
-        //setMeasurementServo(80);
+        setMeasurementServo(80);
     }
 
     public void testConductivity(){
@@ -397,5 +579,9 @@ public class EXERobot {
         robot.runPCAServo(PING_PONG_SERVO, 20);
         robot.sleep(3000);
         robot.runPCAServo(PING_PONG_SERVO, 180);
+    }
+
+    public void testPing(){
+        System.out.println("Ping: " + getPing());
     }
 }
