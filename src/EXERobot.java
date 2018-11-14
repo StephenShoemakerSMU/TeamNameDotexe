@@ -642,7 +642,7 @@ public class EXERobot {
 
     }
 
-    public void getLocation(int quadrant){
+    public double[] getLocation(int quadrant){
 
         int retval;
         double[] soln;
@@ -694,9 +694,11 @@ public class EXERobot {
             soln = nav.getSolution();
             System.out.println("(x,y) coordinates of robot = (" +
                     soln[0] + "," + soln[1] + ")");
+            return soln;
         }
         else if (retval == Navigation.RETURN_RANGE) {
             System.err.println("Angle out of range");
+
         }
         else if (retval == Navigation.RETURN_SINGULAR) {
             System.err.println("Singular Jacobian matrix");
@@ -704,6 +706,8 @@ public class EXERobot {
         else if (retval == Navigation.RETURN_DIVERGENCE) {
             System.err.println("Convergence failure in 100 iterations");
         }
+        double output[] = {-1.0,-1.0};
+        return output;
     }
 
 }
