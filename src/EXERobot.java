@@ -320,6 +320,8 @@ public class EXERobot {
     //This is the function for temperature quadrant
     public void quadrantOne() {
 
+
+        int QUADRANT  = 1;
         yeetTheBridge();
 
         //
@@ -431,6 +433,8 @@ public class EXERobot {
 
     //Run for quadrant two
     public void quadrantTwo() {
+        int QUADRANT =2;
+
         yeetTheBridge();
 
         //
@@ -481,6 +485,9 @@ public class EXERobot {
 
     //Run for Quadrant Three
     public void quadrantThree(){
+
+        int QUADRANT = 3;
+
         goToOrigin();
 
         //Approach 45 degrees of volcano
@@ -510,6 +517,9 @@ public class EXERobot {
 
     //Run for Quadrant Four
     public void quadrantFour(){
+
+        int QUADRANT =4;
+
         goToOrigin();
 
         //Pass the barriers
@@ -639,12 +649,43 @@ public class EXERobot {
 
         IRArrayDensity beaconData = new IRArrayDensity(generateIRArrayMatrix());
 
+        char beaconOne;
+        char beaconTwo;
+        char beaconThree;
+
+        switch(quadrant){
+            case 1:
+                beaconOne = PYLON_SOUTHEAST;
+                beaconTwo = PYLON_NORTHEAST;
+                beaconThree = PYLON_NORTH;
+                break;
+            case 2:
+                beaconOne = PYLON_NORTH;
+                beaconTwo = PYLON_NORTHWEST;
+                beaconThree = PYLON_SOUTHWEST;
+                break;
+            case 3:
+                beaconOne = PYLON_NORTHWEST;
+                beaconTwo = PYLON_SOUTHWEST;
+                beaconThree = PYLON_SOUTH;
+                break;
+            case 4:
+                beaconOne = PYLON_SOUTH;
+                beaconTwo = PYLON_SOUTHEAST;
+                beaconThree= PYLON_NORTHEAST;
+                break;
+            default:
+                beaconOne = PYLON_SOUTH;
+                beaconTwo = PYLON_SOUTHEAST;
+                beaconThree= PYLON_NORTHEAST;
+                break;
+        }
 
 
 // Create an instance of the Navigation object class
         Navigation nav = new Navigation();
 // The two beacon angle differences can be set and the solver run any number of times
-        nav.setAngles(beaconData.indexBetween(PYLON_NORTH, PYLON_NORTHWEST)*5, beaconData.indexBetween(PYLON_NORTHWEST, PYLON_SOUTHWEST)*5);
+        nav.setAngles(beaconData.indexBetween(beaconOne, beaconTwo)*5, beaconData.indexBetween(beaconTwo, beaconThree)*5);
 // Run solver to find unknown robot coordinates
 // RETURN_RANGE, RETURN_SUCCESS, RETURN_SINGULAR, and RETURN_DIVERGENCE are error codes from our code, don't worry about them
         retval = nav.newton_raphson();
