@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f02eacd-fd41-4f8e-bea8-da91dd760998" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/IRArrayDensity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Java Code.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Java Code.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Diagnostic.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Diagnostic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/EXERobot.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/EXERobot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/RobotDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/RobotDriver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Diagnostic.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Diagnostic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Diagnostic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Diagnostic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EXERobot.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/EXERobot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EXERobot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EXERobot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RTXRobot.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RXTXRobot.jar" beforeDir="false" afterPath="$PROJECT_DIR$/src/RXTXRobot.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RobotDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RobotDriver.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,32 +29,32 @@
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.8" value="2" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="9" />
-          <entry key="java" value="17" />
+          <entry key="class" value="26" />
+          <entry key="java" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="9" />
-          <entry key="JAVA" value="17" />
+          <entry key="CLASS" value="26" />
+          <entry key="JAVA" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="class" value="1" />
-          <entry key="java" value="2897" />
+          <entry key="java" value="5024" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="2897" />
+          <entry key="JAVA" value="5024" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -63,51 +62,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Diagnostic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="880">
-              <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/RXTXRobot.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="544" column="22" selection-start-line="544" selection-start-column="15" selection-end-line="544" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/EXERobot.class">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/EXERobot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="678">
-              <caret line="155" column="51" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="51" />
+            <state relative-caret-position="336">
+              <caret line="641" column="8" lean-forward="true" selection-start-line="641" selection-start-column="8" selection-end-line="641" selection-end-column="8" />
               <folding>
-                <element signature="e#9089#9090#0" expanded="true" />
-                <element signature="e#9166#9167#0" expanded="true" />
-                <element signature="e#15423#15424#0" expanded="true" />
-                <element signature="e#15461#15462#0" expanded="true" />
-                <element signature="e#16614#16615#0" expanded="true" />
-                <element signature="e#16679#16680#0" expanded="true" />
-                <element signature="e#17073#17074#0" expanded="true" />
-                <element signature="e#17129#17130#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#15453#15454#0" expanded="true" />
+                <element signature="e#15491#15492#0" expanded="true" />
+                <element signature="e#16644#16645#0" expanded="true" />
+                <element signature="e#16709#16710#0" expanded="true" />
+                <element signature="e#17103#17104#0" expanded="true" />
+                <element signature="e#17159#17160#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Diagnostic.class">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/IRArrayDensity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="812">
+              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+              <folding>
+                <element signature="e#1563#1564#0" expanded="true" />
+                <element signature="e#1593#1594#0" expanded="true" />
+                <element signature="e#1653#1654#0" expanded="true" />
+                <element signature="e#1691#1692#0" expanded="true" />
+                <element signature="e#1737#1738#0" expanded="true" />
+                <element signature="e#1767#1768#0" expanded="true" />
+                <element signature="e#1825#1826#0" expanded="true" />
+                <element signature="e#1863#1864#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -129,6 +118,7 @@
       <find>s</find>
       <find>getCond</find>
       <find>getCon</find>
+      <find>getSlope</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,8 +128,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/QuadrantOne.java" />
-        <option value="$PROJECT_DIR$/src/RobotDriver.java" />
         <option value="$PROJECT_DIR$/src/Diagnostic.java" />
+        <option value="$PROJECT_DIR$/src/RobotDriver.java" />
+        <option value="$PROJECT_DIR$/src/IRArrayDensity.java" />
         <option value="$PROJECT_DIR$/src/EXERobot.java" />
       </list>
     </option>
@@ -155,7 +146,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -170,35 +161,27 @@
             </path>
             <path>
               <item name="Java Code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamNameDotexe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="RTXRobot.jar" type="ab9368bb:PsiFileNode" />
-            </path>
-            <path>
-              <item name="Java Code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TeamNameDotexe" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="RTXRobot.jar" type="ab9368bb:PsiFileNode" />
-              <item name="rxtxrobot" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Java Code" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542159131612" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542220262451" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/RXTXRobot.jar!/" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Stephen\Documents\GitHub\TeamNameDotexe\src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -262,8 +245,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.26599148" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26599148" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -363,21 +347,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RobotDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/ArduinoNano.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/ArduinoUno.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
@@ -391,6 +361,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Nav.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1687">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Diagnostic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EXERobot.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RobotDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -401,36 +395,157 @@
     <entry file="file://$PROJECT_DIR$/src/Diagnostic.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/RXTXRobot.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/Coord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/DigitalPin.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/Global.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/Labview.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/RFIDSensor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/RXTXRobot.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/SerialCommunication.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/RXTXRobot.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="-10670">
           <caret line="544" column="22" selection-start-line="544" selection-start-column="15" selection-end-line="544" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Diagnostic.java">
+    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/VersionCheckThread.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+        <state relative-caret-position="102">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/EXERobot.class">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/VersionCheckThread.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/RXTXRobot.jar!/rxtxrobot/Version.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/ArduinoUno.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/Coord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/DigitalPin.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/Global.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/Labview.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/src/RTXRobot.jar!/rxtxrobot/RFIDSensor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IRArrayDensity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+          <folding>
+            <element signature="e#1563#1564#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1653#1654#0" expanded="true" />
+            <element signature="e#1691#1692#0" expanded="true" />
+            <element signature="e#1737#1738#0" expanded="true" />
+            <element signature="e#1767#1768#0" expanded="true" />
+            <element signature="e#1825#1826#0" expanded="true" />
+            <element signature="e#1863#1864#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EXERobot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="155" column="51" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="51" />
+        <state relative-caret-position="336">
+          <caret line="641" column="8" lean-forward="true" selection-start-line="641" selection-start-column="8" selection-end-line="641" selection-end-column="8" />
           <folding>
-            <element signature="e#9089#9090#0" expanded="true" />
-            <element signature="e#9166#9167#0" expanded="true" />
-            <element signature="e#15423#15424#0" expanded="true" />
-            <element signature="e#15461#15462#0" expanded="true" />
-            <element signature="e#16614#16615#0" expanded="true" />
-            <element signature="e#16679#16680#0" expanded="true" />
-            <element signature="e#17073#17074#0" expanded="true" />
-            <element signature="e#17129#17130#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#15453#15454#0" expanded="true" />
+            <element signature="e#15491#15492#0" expanded="true" />
+            <element signature="e#16644#16645#0" expanded="true" />
+            <element signature="e#16709#16710#0" expanded="true" />
+            <element signature="e#17103#17104#0" expanded="true" />
+            <element signature="e#17159#17160#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,4 +1,5 @@
 import rxtxrobot.*;
+import java.util.*;
 
 public class EXERobot {
     //USB PORT
@@ -28,10 +29,10 @@ public class EXERobot {
     //Pylons
     final private static char PYLON_NORTHEAST = 'K';
     final private static char PYLON_NORTH = 'G';
-    //final private static char PYLON_NORTHWEST; //TODO
+    final private static char PYLON_NORTHWEST = 'Z'; //TODO
     final private static char PYLON_SOUTHEAST = 'V';
     final private static char PYLON_SOUTH = 'N';
-    //final private static char PYLON_SOUTHWEST; //TODO
+    final private static char PYLON_SOUTHWEST = 'Z'; //TODO
 
     //Movement Constants
     final private static int MOTORLEFTCONSTANT = 450;
@@ -495,10 +496,11 @@ public class EXERobot {
 
         //getIncline
         testInclinometer();
-
         //ascend rest of Volcano
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3000);
+        while(getSlope() > 10) {
+            robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 300);
+            robot.sleep(400);
+        }
 
         //Drop Ball
         ballDrop();
@@ -590,4 +592,77 @@ public class EXERobot {
     public void testPing(){
         System.out.println("Ping: " + getPing());
     }
+
+    public char[] getIRArray(){
+        final int READING_COUNT = 15;
+        char readings[] = new char[READING_COUNT];
+        robot.refreshDigitalPins();
+
+        //populating readings with readings
+        for (int index = 0; index < READING_COUNT; index++) {
+            robot.refreshDigitalPins();
+            char currentReceived = robot.getIRChar();
+
+            readings[index] = currentReceived;
+            robot.sleep(100);
+        }
+
+        return readings;
+    }
+
+
+    public char[][] generateIRArrayMatrix(){
+        //this is the amount of readings that can be taken on a 5degree interval in the range of the IR Servo
+        int ANGLE_COUNT = 47;
+        char arrayMatrix[][] = new char[ANGLE_COUNT][];
+
+        zeroServos();
+
+        for(int index = 0; index < ANGLE_COUNT; index++){
+            robot.runPCAServo(SERVO_MEASUREMENTS_2, (int) ((7.2 / 9.0) * (index*5)));
+            robot.sleep(100);
+
+            robot.refreshDigitalPins();
+
+            arrayMatrix[index] = getIRArray();
+
+        }
+
+        return arrayMatrix;
+
+    }
+
+    public void getLocation(int quadrant){
+
+        int retval;
+        double[] soln;
+
+        IRArrayDensity beaconData = new IRArrayDensity(generateIRArrayMatrix());
+
+
+
+// Create an instance of the Navigation object class
+        Navigation nav = new Navigation();
+// The two beacon angle differences can be set and the solver run any number of times
+        nav.setAngles(beaconData.indexBetween(PYLON_NORTH, PYLON_NORTHWEST)*5, beaconData.indexBetween(PYLON_NORTHWEST, PYLON_SOUTHWEST)*5);
+// Run solver to find unknown robot coordinates
+// RETURN_RANGE, RETURN_SUCCESS, RETURN_SINGULAR, and RETURN_DIVERGENCE are error codes from our code, don't worry about them
+        retval = nav.newton_raphson();
+        if (retval == Navigation.RETURN_SUCCESS) {
+// Retrieve solution of coordinates
+            soln = nav.getSolution();
+            System.out.println("(x,y) coordinates of robot = (" +
+                    soln[0] + "," + soln[1] + ")");
+        }
+        else if (retval == Navigation.RETURN_RANGE) {
+            System.err.println("Angle out of range");
+        }
+        else if (retval == Navigation.RETURN_SINGULAR) {
+            System.err.println("Singular Jacobian matrix");
+        }
+        else if (retval == Navigation.RETURN_DIVERGENCE) {
+            System.err.println("Convergence failure in 100 iterations");
+        }
+    }
+
 }
