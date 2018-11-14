@@ -539,6 +539,12 @@ public class EXERobot {
     }
 
 
+    public void ReleaseBall()
+    {
+        robot.runPCAServo(PING_PONG_SERVO, 180);
+        robot.sleep(900);
+        robot.runPCAServo(PING_PONG_SERVO, 60);
+    }
     //Put whatever needs to be tested into here
     public void test(){
         moveIrSensorServo(235);
@@ -709,5 +715,6 @@ public class EXERobot {
         double output[] = {-1.0,-1.0};
         return output;
     }
+
 
 }
