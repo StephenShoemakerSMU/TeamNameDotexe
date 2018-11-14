@@ -29,10 +29,16 @@ public class Diagnostic {
                 case 'd':
                     robot.testIR();
                     break;
+                case 'e':
+                    robot.testPing();
+                    break;
+                case 'f':
+                    robot.test();
+                    break;
 
             }
-            in = input.nextLine().charAt(0);
             menu();
+            in = input.nextLine().charAt(0);
         }
         robot.close();
     }
@@ -43,7 +49,8 @@ public class Diagnostic {
                     "b. Test Conductivity \n" +
                     "c. Test Inclinometer \n" +
                     "d. Test IR \n" +
-                    "e. Test Ping \n";
+                    "e. Test Ping \n" +
+                    "f. Test whatever is in EXERobot.test";
             System.out.println(output);
         }
     }

@@ -9,7 +9,7 @@ public class EXERobot {
     final private static int TEMP_SENSOR_PORT = 0;
     final private static int IR_SENSOR_PORT = 4;
     final private static int BUMP_SENSOR = 5;
-    final private static int PING_SENSOR = -1; //TODO
+    final private static int PING_SENSOR = 7; //TODO
 
     //Movement Motor Ports
     final private static int MOTOR_LEFT = 11;
@@ -141,8 +141,8 @@ public class EXERobot {
         int sum = 0;
 
         //CALIBRATE THESE VALUES
-        //double slope =  -1.071428571;
-        //double yInter = 847.7452381;
+        double slope =  -0.534779;
+        double yInter = 447.017;
 
 
         double averageReading = 0;
@@ -153,8 +153,8 @@ public class EXERobot {
             sum += reading;
         }
         averageReading = sum / (double) readingCount;
-        //double temp = (averageReading - yInter) / slope;
-        return averageReading;
+        double temp = (averageReading * slope) + yInter;
+        return temp;
     }
 
     //use this function to getPing sensor value
@@ -162,20 +162,21 @@ public class EXERobot {
         int sum = 0;
 
         //CALIBRATE THESE VALUES
-        //double slope =  -1.071428571;
-        //double yInter = 847.7452381;
+        double slope = 0.374359205;
+        double yInter = 0.295889918;
 
 
         double averageReading = 0;
         int readingCount = 10;
         for (int i = 0; i < readingCount; i++) {
-            robot.refreshAnalogPins();
-            int reading = robot.getAnalogPin(PING_SENSOR).getValue();
+            robot.refreshDigitalPins();
+            int reading = robot.getPing(PING_SENSOR);
             sum += reading;
         }
         averageReading = sum / (double) readingCount;
-        //double pingValue = (averageReading - yInter) / slope;
-        return averageReading;
+        double pingValue = (averageReading - yInter) / slope;
+        return pingValue;
+        //return averageReading;
     }
 
     //Returns the current slope the robot is on
@@ -195,12 +196,13 @@ public class EXERobot {
 
     //Return conductivity
     public double getConductivity() {
+        robot.refreshDigitalPins();
         int ADC = robot.getConductivity();
-        //double slope =-.363636;
-        //double yInter = ;
-        //return yInter + (slope * ADC);
+        double slope = -.568211;
+        double yInter = 578.889;
+        return yInter + (slope * ADC);
 
-        return ADC;
+
     }
 
     // TODO
@@ -527,7 +529,7 @@ public class EXERobot {
 
     //Put whatever needs to be tested into here
     public void test(){
-
+        moveIrSensorServo(235);
     }
 
     //This function figures out where the robot is and goes to a set point based on where it is after leaving the bridge
@@ -550,20 +552,24 @@ public class EXERobot {
 
     //DIAGNOSTIC FUNCTIONS
     public void testTemperature(){
-
+        zeroServos();
         System.out.println("TESTING TEMPERATURE");
         setMeasurementServo(20);
         robot.sleep(1000);
         robot.sleep(15000);
         System.out.println("Temperature: " +  getTemperature());
-        setMeasurementServo(80);
+        robot.sleep(1000);
+        zeroServos();
     }
 
     public void testConductivity(){
-        setMeasurementServo(20);
+        zeroServos();
+        setMeasurementServo(35);
+        System.out.println("Getting Conductivity");
         robot.sleep(1000);
         robot.sleep(15000);
         System.out.println("Conductivity: " +  getConductivity());
+        robot.sleep(1000);
         setMeasurementServo(80);
     }
 
