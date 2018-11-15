@@ -539,12 +539,12 @@ public class EXERobot {
     }
 
 
-    public void ReleaseBall()
-    {
-        robot.runPCAServo(PING_PONG_SERVO, 180);
-        robot.sleep(900);
-        robot.runPCAServo(PING_PONG_SERVO, 60);
-    }
+        public void ReleaseBall()
+        {
+            robot.runPCAServo(PING_PONG_SERVO, 180);
+            robot.sleep(900);
+            robot.runPCAServo(PING_PONG_SERVO, 60);
+        }
     //Put whatever needs to be tested into here
     public void test(){
         moveIrSensorServo(235);
@@ -596,13 +596,9 @@ public class EXERobot {
     }
 
     public void testIR(){
-        //angleRecieved();
-        robot.runPCAServo(PING_PONG_SERVO, 180);
-        //robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 5000);
-        //robot.sleep(50000);
-        robot.runPCAServo(PING_PONG_SERVO, 20);
-        robot.sleep(3000);
-        robot.runPCAServo(PING_PONG_SERVO, 180);
+        char IRMAtrix[][] = generateIRArrayMatrix();
+        IRArrayDensity beaconDensity = new IRArrayDensity(IRMAtrix);
+        System.out.println("Angle between K and M: " +  beaconDensity.indexBetween('A', 'M')*5);
     }
 
     public void testPing(){
