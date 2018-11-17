@@ -79,7 +79,7 @@ public class EXERobot {
     public char readIRChar() {
 
         //The amount of reading counts
-        int readingCount = 10;
+        int readingCount = 4;
         char chars[] = new char[readingCount];
         robot.refreshDigitalPins();
 
@@ -149,6 +149,7 @@ public class EXERobot {
         double averageReading = 0;
         int readingCount = 10;
         for (int i = 0; i < readingCount; i++) {
+            robot.sleep(200);
             robot.refreshAnalogPins();
             int reading = robot.getAnalogPin(TEMP_SENSOR_PORT).getValue();
             sum += reading;
@@ -182,14 +183,22 @@ public class EXERobot {
 
     //Returns the current slope the robot is on
     public int getSlope() {
+
+        robot.sleep(1000);
         robot.refreshAnalogPins();
 
-
-        int adc = robot.getAnalogPin(INCLINOMETER_SENSOR_PORT).getValue(); //Todo needs to be calibrated
+        int adc = robot.getAnalogPin(INCLINOMETER_SENSOR_PORT).getValue();
+        robot.sleep(1000);
+        adc = robot.getAnalogPin(INCLINOMETER_SENSOR_PORT).getValue();
+        //Todo needs to be calibrated
 
         //CALIBRATE THESE
-        double slope = -0.380952381;
-        double yInter = 118.2380952;
+        //double slope = 1;
+        //double yInter = 0;
+        double slope = -0.169839;
+        double yInter = 80.516;
+
+
 
         return (int) ((slope * adc) + yInter);
         //return adc;
@@ -197,6 +206,7 @@ public class EXERobot {
 
     //Return conductivity
     public double getConductivity() {
+        robot.sleep(1000);
         robot.refreshDigitalPins();
         int ADC = robot.getConductivity();
         double slope = -.568211;
@@ -216,18 +226,15 @@ public class EXERobot {
         boolean beaconOneFound = false;
         char beaconOne = '0';
         int angleOne = -1;
-        for (int i = 0; i < 36; i++) {
+        for (int i = 0; i < 36; i++)
+        {
             robot.runPCAServo(SERVO_MEASUREMENTS_2, (int) ((7.2 / 9.0) * angle));
             robot.sleep(100);
 
             c = readIRChar();
-            if (c != 0 && beaconOneFound) {
-                System.out.println("Angle between beacon " + beaconOne + " and " + c + "is " + (angleOne - angle));
-            }
-
             System.out.println("Character: " + c + " Angle: " + angle);
-            beaconOne = c;
-            angleOne = angle;
+            //beaconOne = c;
+            //angleOne = angle;
             //rtn[count] = angle;
             //count++;
 
@@ -246,23 +253,29 @@ public class EXERobot {
 
     //Turns the robot ten degrees clockwise
     public void turnTen() {
-        int time = 80; //todo calibrate this so it does a 10 degree turn
+        int time = 50; //todo calibrate this so it does a 10 degree turn
         robot.runTwoPCAMotor(MOTOR_LEFT, 200, MOTOR_RIGHT, 350, time);
-        robot.sleep(time + 100);
+        robot.sleep(time + 1000);
+    }
+
+    public void turnTenOpp() {
+        int time = 50; //todo calibrate this so it does a 10 degree turn
+        robot.runTwoPCAMotor(MOTOR_LEFT, -200, MOTOR_RIGHT, -240, time);
+        robot.sleep(time + 1000);
     }
 
     //Turns the robot ninety degrees clockwise
     public void turnNinety() {
         int time = 1060;
-        robot.runTwoPCAMotor(MOTOR_LEFT, 200, MOTOR_RIGHT, 300, time);
+        robot.runTwoPCAMotor(MOTOR_LEFT, 255, MOTOR_RIGHT, 300, time);
         robot.sleep(time + 1000);
         System.out.println("Turning ninety");
     }
 
     //turns the robot ninety degrees counter clockwise
     public void turnNinetyOpp() {
-        int time = 600;
-        robot.runTwoPCAMotor(MOTOR_LEFT, -200, MOTOR_RIGHT, -300, time);
+        int time = 1060;
+        robot.runTwoPCAMotor(MOTOR_LEFT, -250, MOTOR_RIGHT, -200, time);
         robot.sleep(time + 1000);
         System.out.println("Turning ninety");
     }
@@ -278,7 +291,14 @@ public class EXERobot {
     //TODO CHECK THE DIRECTION
     public void turnFourtyFive() {
         int time = 530;
-        robot.runTwoPCAMotor(MOTOR_LEFT, 200, MOTOR_RIGHT, 300, time);
+        robot.runTwoPCAMotor(MOTOR_LEFT, 200, MOTOR_RIGHT, 340, time);
+        robot.sleep(1000);
+    }
+
+    public void turnFourtyFiveOpp() {
+        int time = 530;
+        robot.runTwoPCAMotor(MOTOR_LEFT, -180, MOTOR_RIGHT, -230,time);
+        robot.sleep(1000);
     }
 
 
@@ -288,6 +308,17 @@ public class EXERobot {
         robot.runTwoPCAMotor(MOTOR_LEFT, 0, MOTOR_RIGHT, 0, 1000);
     }
 
+    public void defaultPing()
+    {
+        robot.runPCAServo(PING_PONG_SERVO, 180);
+    }
+    public void releaseBall()
+    {
+        robot.runPCAServo(PING_PONG_SERVO, 40);
+        robot.sleep(100);
+        robot.runPCAServo(PING_PONG_SERVO, 180);
+        // robot.runPCAServo(PING_PONG_SERVO, 20);
+    }
     //returns conductivity
     public double conduction() {
 
@@ -319,116 +350,29 @@ public class EXERobot {
 
     //This is the function for temperature quadrant
     public void quadrantOne() {
-
-
         int QUADRANT  = 1;
         yeetTheBridge();
 
-        //
-        goToOrigin();
-
-        //Move South to Hots Spot until Perpindicular with hot spot
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 5000);
-        robot.sleep(5100);
-        //Turn Towards HotSpot
+        turnFourtyFive();
+        yeetTheBridge();
         turnNinety();
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 2000);
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 1000);
+        robot.sleep(1500);
+        turnNinetyOpp();
+        turnTenOpp();
+        turnTenOpp();
+        turnTenOpp();
+        yeetTheBridge();
 
-        //Go Towards Hot spot
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3100);
-        //Get Temperature
+        robot.sleep(1000);
+
+
         testTemperature();
 
-        //back away from hotspot
-        robot.runTwoPCAMotor(MOTOR_LEFT, -1* MOTORLEFTCONSTANT, MOTOR_RIGHT, -1*MOTORRIGHTCONSTANT, 1000);
-        robot.sleep(1100);
 
-        //turn 180
-        turnNinety();
-        turnNinety();
 
-        //approach Volcano
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, -1* MOTORRIGHTCONSTANT, 2000);
-        robot.sleep(2100);
-
-        //turn 90 to line up with ramp
-        turnNinety();
-
-        //line up with 45 degree angle from volcano
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-
-        //turn Towards volcano ramp
-        turnNinety();
-        turnFourtyFive();
-
-        //Go up ramp
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3000);
-
-        //getIncline
         testInclinometer();
-
-        //FIN
-
-
-
-        //setMeasurementServo(80);
-        //moveIrSensorServo(0);
-        //yeetTheBridge();
-        //turnNinety();
-
-        //robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        //robot.sleep(3000);
-        //turnNinetyOpp();
-
-        //going towards temperature bin
-
-        //robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT-20, MOTOR_RIGHT, MOTORRIGHTCONSTANT + 50, 4800);
-        //robot.sleep(6200);
-        //setMeasurementServo(20);
-        //robot.sleep(1000);
-        /*robot.sleep(15000);
-        System.out.println("Temperature: " +  getTemperature());
-        setMeasurementServo(80);
-
-        robot.runTwoPCAMotor(MOTOR_LEFT, -1*MOTORLEFTCONSTANT, MOTOR_RIGHT, (-1*MOTORRIGHTCONSTANT)+170, 2700);
-        robot.sleep(2800);
-        turnTen();
-        robot.sleep(100);
-        turnTen();
-        robot.sleep(100);
-        */
-        //robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, (  MOTORRIGHTCONSTANT - 100), 3000);
-        System.out.println("Angle: " + getSlope());
-        //angleRecieved();
-
-        //robot.sleep(1000);
-        //turnFourtyFive();
-        //robot.sleep(600);
-        //robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 2500);
-        //robot.sleep(2600);
-        //ballDrop();
-
-        //angleRecieved();
-        //robot.runPCAServo(SERVO_MEASUREMENTS_2, (int)((7.2/9.0)* 180));
-
-//        moveTilPerpindicularTowardsBin();
-        //    getAngleBetweenTwoPylons();
-        //    turnTowardsBin()
-        //    moveTowardsBin()
-        //    dropConductivityProbe()
-        //    getMeasurement();
-        //    liftConductvityProbe();
-        //    turn90TowardsMountain()
-        //    turnAtMountain();
-        //    yeetHalfwayAtMountain();
-        //    getInclinometerMeasurement();
-        //    yeetSecondHalfOfVolcano();
-        //    yeetTheGasSensor();
-        //    yeetBackDownTheMountain();
-        //
-//        moveMotor(-200, -250, 7890);
-//        getTemperature();
     }
 
     //Run for quadrant two
@@ -437,114 +381,67 @@ public class EXERobot {
 
         yeetTheBridge();
 
-        //
-        goToOrigin();
+        turnNinetyOpp();
+        turnTen();
 
-        //Move South to Sangbox until Perpindicular with sandBox
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 5000);
-        robot.sleep(5100);
-        //Turn Towards SandBox
-        turnNinety();
+        yeetTheBridge();
 
-        //Go Towards SandBox
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3100);
-        //Get Conductivity
-        testTemperature();
+        testConductivity();
 
-        //back away from hotspot
-        robot.runTwoPCAMotor(MOTOR_LEFT, -1* MOTORLEFTCONSTANT, MOTOR_RIGHT, -1*MOTORRIGHTCONSTANT, 1000);
-        robot.sleep(1100);
 
-        //turn 180
-        turnNinety();
-        turnNinety();
 
-        //approach Volcano
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, -1* MOTORRIGHTCONSTANT, 2000);
-        robot.sleep(2100);
-
-        //turn 90 to line up with ramp
-        turnNinety();
-
-        //line up with 45 degree angle from volcano
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-
-        //turn Towards volcano ramp
-        turnNinety();
-        turnFourtyFive();
-
-        //Go up ramp
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3000);
-
-        //getIncline
         testInclinometer();
-
     }
 
     //Run for Quadrant Three
     public void quadrantThree(){
-
         int QUADRANT = 3;
 
-        goToOrigin();
-
-        //Approach 45 degrees of volcano
+        //goToOrigin();
+        yeetTheBridge();
+        turnNinety();
         robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3000);
-        //Turn Towards Volcano
-        turnFourtyFive();
+        robot.sleep(3500);
+        turnNinetyOpp();
+        yeetTheBridge();
+        yeetTheBridge();
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 1000);
 
-        //Ascend halfway up volcano
 
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3000);
 
-        //getIncline
+
         testInclinometer();
-        //ascend rest of Volcano
-        while(getSlope() > 10) {
-            robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 300);
-            robot.sleep(400);
-        }
 
-        //Drop Ball
-        ballDrop();
+
+        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 1000);
+
+
 
         //fin
     }
 
     //Run for Quadrant Four
     public void quadrantFour(){
+        yeetTheBridge();
+        //angleRecieved();
 
-        int QUADRANT =4;
+        turnNinetyOpp();
+        turnTen();
 
-        goToOrigin();
+        yeetTheBridge();
+        yeetTheBridge();
+        yeetTheBridge();
 
-        //Pass the barriers
-        frogger();
-
-        //Turn to facing volcano
-        turnFourtyFive();
-
-        //ascend volcano
-        robot.runTwoPCAMotor(MOTOR_LEFT, MOTORLEFTCONSTANT, MOTOR_RIGHT, MOTORRIGHTCONSTANT, 3000);
-        robot.sleep(3000);
-
-        //getIncline
         testInclinometer();
-
-        //fin
     }
 
 
-        public void ReleaseBall()
-        {
-            robot.runPCAServo(PING_PONG_SERVO, 180);
-            robot.sleep(900);
-            robot.runPCAServo(PING_PONG_SERVO, 60);
-        }
+    public void ReleaseBall()
+    {
+        robot.runPCAServo(PING_PONG_SERVO, 180);
+        robot.sleep(900);
+        robot.runPCAServo(PING_PONG_SERVO, 60);
+    }
     //Put whatever needs to be tested into here
     public void test(){
         moveIrSensorServo(235);
@@ -574,7 +471,7 @@ public class EXERobot {
         System.out.println("TESTING TEMPERATURE");
         setMeasurementServo(20);
         robot.sleep(1000);
-        robot.sleep(15000);
+        robot.sleep(9000);
         System.out.println("Temperature: " +  getTemperature());
         robot.sleep(1000);
         zeroServos();
@@ -582,10 +479,10 @@ public class EXERobot {
 
     public void testConductivity(){
         zeroServos();
-        setMeasurementServo(35);
+        setMeasurementServo(45);
         System.out.println("Getting Conductivity");
         robot.sleep(1000);
-        robot.sleep(15000);
+        robot.sleep(5000);
         System.out.println("Conductivity: " +  getConductivity());
         robot.sleep(1000);
         setMeasurementServo(80);
@@ -598,7 +495,7 @@ public class EXERobot {
     public void testIR(){
         char IRMAtrix[][] = generateIRArrayMatrix();
         IRArrayDensity beaconDensity = new IRArrayDensity(IRMAtrix);
-        System.out.println("Angle between K and M: " +  beaconDensity.indexBetween('A', 'M')*5);
+        System.out.println("Angle between K and M: " + beaconDensity.indexBetween('A', 'M')*5);
     }
 
     public void testPing(){
@@ -606,8 +503,9 @@ public class EXERobot {
     }
 
     public char[] getIRArray(){
-        final int READING_COUNT = 15;
+        final int READING_COUNT = 3;
         char readings[] = new char[READING_COUNT];
+        robot.sleep(1000);
         robot.refreshDigitalPins();
 
         //populating readings with readings
@@ -631,8 +529,8 @@ public class EXERobot {
         zeroServos();
 
         for(int index = 0; index < ANGLE_COUNT; index++){
-            robot.runPCAServo(SERVO_MEASUREMENTS_2, (int) ((7.2 / 9.0) * (index*5)));
-            robot.sleep(100);
+            robot.runPCAServo(4, (int) ((7.2 / 9.0) * (index*5)));
+            robot.sleep(10);
 
             robot.refreshDigitalPins();
 

@@ -5,7 +5,8 @@ public class IRArrayDensity {
     private ArrayList<Integer> density;
 
     public IRArrayDensity(char[][] matrix){
-
+        beacons = new ArrayList<Character>();
+        density = new ArrayList<Integer>();
         for(int rowIndex = 0; rowIndex < matrix.length; rowIndex++){
             ArrayList<Character> charactersPresent = new ArrayList<Character>();
             for(int colIndex = 0; colIndex < matrix[rowIndex].length; colIndex++ ){
@@ -30,7 +31,8 @@ public class IRArrayDensity {
                     highestDensity = index;
                 }
             }
-
+            //System.out.println("HERE");
+            //System.out.println(charactersPresent.get(highestDensity));
             beacons.add(charactersPresent.get(highestDensity));
             density.add(densityValues[highestDensity]);
         }
@@ -76,5 +78,11 @@ public class IRArrayDensity {
 
         return Math.abs(beaconTwoIndex - beaconOneIndex);
 
+    }
+
+    public void display(){
+        for(int index = 0; index < beacons.size(); index++){
+            System.out.println("Angle " + index*5 + ": " + beacons.get(index) + "Density: " + density.get(index));
+        }
     }
 }
